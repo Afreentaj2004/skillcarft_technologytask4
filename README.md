@@ -1,1 +1,7 @@
-# skillcarft_technologytask4
+This Python script scrapes product details like names, prices, and ratings from Amazon using requests, BeautifulSoup, and random User-Agent rotation to prevent request blocking. 
+The script initializes a list of user agents that simulate different browsers, selecting one randomly for each request to reduce detection. 
+The `fetch_products` function takes a URL, sends a GET request, and checks if the response is successful. If the response status code is not 200, it returns an empty list and prints an error. 
+Upon successful response, it parses the HTML with BeautifulSoup, targeting elements containing product details. Each product’s name, price, and rating are extracted from `s-search-result` div elements, which typically encapsulate Amazon product data on search result pages. 
+For price extraction, whole and fractional parts are combined to provide the full price. If the script encounters any missing details, it marks them as “N/A.” Each product dictionary, containing name, price, and rating, is appended to a list called `products`. 
+The `try-except` block around the extraction ensures that if any parsing error occurs (e.g., missing tags), it won’t halt the script; instead, it prints an error message and continues with other products. 
+This approach ensures robustness and gathers product information even from partially loaded or modified pages, which is especially useful for web scraping from frequently updated sites like Amazon. The function returns a list of dictionaries, each representing a product, making the data ready for further use or storage in formats like CSV or DataFrame.
